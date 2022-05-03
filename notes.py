@@ -50,11 +50,20 @@
 
 
 #Modifying the Global Scope is bad practice
-enemies = 1
+# enemies = 1
 
-def increase_enemies():
-    print(f"enemies inside the function: {enemies}")
-    return enemies + 1
+# def increase_enemies():
+#     print(f"enemies inside the function: {enemies}")
+#     return enemies + 1
 
-enemies = increase_enemies()
-print(f"eneimies outside the function {enemies}")
+# enemies = increase_enemies()
+# print(f"eneimies outside the function {enemies}")
+
+
+#Global Constants - define and never plan to change again
+PI = 3.14159
+URL = "https://www.google.com"
+TWITTER_HANDLE ="@iamsdawson"
+
+
+    
