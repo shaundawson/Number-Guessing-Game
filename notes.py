@@ -47,3 +47,14 @@
 #         new_enemy = enemies[0]
 #     print(new_enemy)
 # create_enemy()
+
+
+#Modifying the Global Scope is bad practice
+enemies = 1
+
+def increase_enemies():
+    print(f"enemies inside the function: {enemies}")
+    return enemies + 1
+
+enemies = increase_enemies()
+print(f"eneimies outside the function {enemies}")
