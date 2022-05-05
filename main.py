@@ -4,12 +4,17 @@ import random
 EASY_LEVEL_TURNS = 10
 HARD_LEVEL_TURNS = 5
 
-#Function to check the user's guess against answer
-def check_answer(guess, answer):
+
+turns = 0 
+#Function to check the user's guess against answer. Track the number of turns and reduce by 1 if wrong
+def check_answer(guess, answer, turns):
+    """Checks answer against guess. Returns the number of turns remaining"""
     if guess > answer:
         print("Too high.")
+        return turns - 1
     elif guess < answer:
         print("Too low.")
+        return turns - 1
     else: 
         print(f"You got it! The answer was {answer}.")
 
@@ -28,19 +33,15 @@ def game():
     answer = random.randint(1,100)
     print(f"Psst, the correct answer is {answer}")
     
-    turns = set_difficulty() #global variable
+    turns = set_difficulty() #set number of turns
     print(f"You have {turns} attempts remaining to guess a number.")
     
-    
+    #Repeat the guessiing functionality if they get it wrong.
     guess = 0 #global variable
     while guess != answer:
         #Ask the user guess a number
         guess = int(input("Make a guess: "))
-        #Check the user's guess. Repeat the guessiing functionality if they get it wrong. 
-        check_answer(guess,answer)
-
-#Track the number of turns by 1 and reduce by 1 if they get it wrong
-
-
+        #Check the user's guess. 
+        turns = check_answer(guess,answer,turns) #This is the number of turns remaining. It updates the local variable on line 36 everytime the answer is checked
 
 game()
