@@ -43,5 +43,8 @@ def game():
         guess = int(input("Make a guess: "))
         #Check the user's guess. 
         turns = check_answer(guess,answer,turns) #This is the number of turns remaining. It updates the local variable on line 36 everytime the answer is checked
-
+        #If user is out of turns, they lose.
+        if turns == 0:
+            print("You've run out of guesses, you lose.")
+            return
 game()
