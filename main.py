@@ -1,4 +1,5 @@
 import random
+from art import logo
 
 #Create global constant for number of attempts
 EASY_LEVEL_TURNS = 10
@@ -27,6 +28,7 @@ def set_difficulty():
         return HARD_LEVEL_TURNS
 
 def game():
+    print(logo)
     #Choose a random number between 1 and 100
     print("Welcome to the Number Guessing Game!")
     print("I\'m thinking of a number between 1 and 100.")
@@ -42,7 +44,7 @@ def game():
         #Ask the user guess a number
         guess = int(input("Make a guess: "))
         #Check the user's guess. 
-        turns = check_answer(guess,answer,turns) #This is the number of turns remaining. It updates the local variable on line 36 everytime the answer is checked
+        turns = check_answer(guess,answer,turns) #This is the number of turns remaining. It updates the local variable on line 38 everytime the answer is checked
         
         #If user is out of turns, they lose.
         if turns == 0:
