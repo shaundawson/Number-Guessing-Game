@@ -1,46 +1,37 @@
 import random
 
-num = random.randint(1,100)
-easy_attempts = 10
-hard_attempts = 5
+#Create global constant for number of attempts
+EASY_LEVEL_TURNS = 10
+HARD_LEVEL_TURNS = 5
 
-print(num)
+#Function to check the user's guess against answer
+def check_answer(guess, answer):
+    if guess > answer:
+        print("Too high.")
+    elif guess < answer:
+        print("Too low.")
+    else: 
+        print(f"You got it! The answer was {answer}")
 
+#Function to set difficulty
+def set_difficulty():
+    level = input('Choose a difficulty. Type "easy" or "hard": ')
+    if level == "easy":
+        return EASY_LEVEL_TURNS 
+    else: 
+        return HARD_LEVEL_TURNS
+
+#Choose a random number between 1 and 100
 print("Welcome to the Number Guessing Game!")
 print("I\'m thinking of a number between 1 and 100.")
+answer = random.randint(1,100)
+print(f"Psst, the correct answer is {answer}")
 
-game_level = input('Choose a difficulty. Type "easy" or "hard": ')
-play_game = True
+turns = set_difficulty()
+print(f"You have {turns} remaining to guess a number.")
 
-def decrease_easy_attempts():
-    return easy_attempts - 1
+#Ask the user guess a number
+guess = int(input("Make a guess: "))
 
-def decrease_hard_attempts():
-    return hard_attempts - 1
-
-def guess_checker():
-    guess = int(input("Make a guess: "))
-    if guess == num:
-        print("Winner Winner chicken dinner")
-    elif guess < num:
-        print("Too low.\nGuess again.") 
-    elif guess > num:
-        print("Too high.\nGuess again")
-
-
-while game_level == "hard":
-    if hard_attempts > 0:
-        print(f"You have {hard_attempts} attempts remaining to guess the number.")
-        attempts = decrease_hard_attempts()
-        guess_checker()
-
-    hard_attempts = decrease_hard_attempts()
-        
-
-while game_level == "easy":  
-    print(f"You have {easy_attempts} attempts remaining to guess the number.")
-    attempts = decrease_easy_attempts()
-    guess_checker()
-    
-    easy_attempts = decrease_easy_attempts()
-       
+#Track the number of turns by 1 and reduce by 1 if they get it wrong
+#Repeating the guessing functionality  if they get it wrong
