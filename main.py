@@ -34,11 +34,11 @@ def game():
     print(f"Psst, the correct answer is {answer}")
     
     turns = set_difficulty() #set number of turns
-    print(f"You have {turns} attempts remaining to guess a number.")
     
     #Repeat the guessiing functionality if they get it wrong.
     guess = 0 #global variable
     while guess != answer:
+        print(f"You have {turns} attempts remaining to guess a number.")
         #Ask the user guess a number
         guess = int(input("Make a guess: "))
         #Check the user's guess. 
